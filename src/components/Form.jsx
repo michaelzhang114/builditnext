@@ -2,29 +2,36 @@
 
 import React, { useState, useEffect } from "react";
 import Slider from "./Slider";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const Form = () => {
+	const router = useRouter();
+	const { data: session } = useSession();
+	// const [submitting, setSubmitting] = useState(false);
+
 	const [proj, setProj] = useState({
 		projectName: "",
 		description: "",
-		scorePV: "",
-		scoreTech: "",
-		scoreDist: "",
-		scoreScale: "",
+		scorePV: "0",
+		scoreTech: "0",
+		scoreDist: "0",
+		scoreScale: "0",
 	});
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		// setSubmitting(true);
-		console.log(proj);
 
 		try {
-			// const response = await fetch("api/prompt/new", {
-			// 	method: "POST",
-			// 	body: JSON.stringify({
-			// 		userId: session?.user.id,
-			// 	}),
-			// });
+			const payload = JSON.stringify({
+				...proj,
+				userId: session?.user.id,
+			});
+			const response = await fetch("api/project/new", {
+				method: "POST",
+				body: payload,
+			});
 
 			if (response.ok) {
 				router.push("/");
@@ -73,12 +80,50 @@ const Form = () => {
 						}}
 					/>
 				</label>
-				<Slider
-					value={proj.scorePV}
-					onChange={(e) => {
-						setProj({ ...proj, scorePV: e.target.value });
-					}}
-				/>
+				<label>
+					<div className="label">
+						<span className="label-text">Perceived Value</span>
+					</div>
+					<Slider
+						value={proj.scorePV}
+						onChange={(e) => {
+							setProj({ ...proj, scorePV: e.target.value });
+						}}
+					/>
+				</label>
+				<label>
+					<div className="label">
+						<span className="label-text">Scale</span>
+					</div>
+					<Slider
+						value={proj.scoreScale}
+						onChange={(e) => {
+							setProj({ ...proj, scoreScale: e.target.value });
+						}}
+					/>
+				</label>
+				<label>
+					<div className="label">
+						<span className="label-text">Technical Skills</span>
+					</div>
+					<Slider
+						value={proj.scoreTech}
+						onChange={(e) => {
+							setProj({ ...proj, scoreTech: e.target.value });
+						}}
+					/>
+				</label>
+				<label>
+					<div className="label">
+						<span className="label-text">Distribution</span>
+					</div>
+					<Slider
+						value={proj.scoreDist}
+						onChange={(e) => {
+							setProj({ ...proj, scoreDist: e.target.value });
+						}}
+					/>
+				</label>
 
 				<button className="btn btn-primary" type="submit">
 					Primary
