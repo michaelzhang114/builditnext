@@ -57,7 +57,9 @@ const Nav = () => {
 								}}
 							>
 								<li>
-									<Link href="#">Text</Link>{" "}
+									<Link href="/create-proj">
+										Create Project
+									</Link>{" "}
 								</li>
 							</ul>
 						</div>
@@ -69,8 +71,11 @@ const Nav = () => {
 						<div className="navbar-center hidden lg:flex">
 							<ul className="menu menu-horizontal px-1">
 								<li>
-									<Link href="#" className="btn btn-accent">
-										Text
+									<Link
+										href="/create-proj"
+										className="btn btn-accent"
+									>
+										Create Project
 									</Link>{" "}
 								</li>
 								{/* <li>

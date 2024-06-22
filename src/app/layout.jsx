@@ -2,6 +2,7 @@ import React from "react";
 import "@styles/globals.css";
 import { AOSInit } from "@components/aos";
 import Provider from "@components/Provider";
+import Nav from "@components/Nav";
 
 export const metadata = {
 	title: "Built It Next",
@@ -15,7 +16,10 @@ const RootLayout = ({ children }) => {
 			<AOSInit />
 			<body>
 				<Provider>
-					<main className="app">{children}</main>
+					<main className="app">
+						<Nav></Nav>
+						{children}
+					</main>
 				</Provider>
 			</body>
 		</html>
