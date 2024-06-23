@@ -28,6 +28,7 @@ const CreateProj = () => {
 			const payload = JSON.stringify({
 				...proj,
 				userId: session?.user.id,
+				// append Jeannen score
 			});
 			const response = await fetch("api/project/new", {
 				method: "POST",

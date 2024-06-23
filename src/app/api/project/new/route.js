@@ -22,6 +22,11 @@ export const POST = async (req, res) => {
 			scoreTech,
 			scoreDist,
 			scoreScale,
+			scoreJeannen:
+				Number(scorePV) +
+				Number(scoreScale) +
+				Number(scoreTech) +
+				Number(scoreDist) * 3,
 		});
 		// console.log(newProj);
 		await newProj.save();

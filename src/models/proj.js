@@ -29,6 +29,10 @@ const ProjSchema = new Schema({
 		type: String,
 		required: [true, "contents is required"],
 	},
+	scoreJeannen: {
+		type: String,
+		required: [true, "contents is required"],
+	},
 });
 
 const Proj = models.Proj || model("Proj", ProjSchema);

@@ -28,6 +28,12 @@ const ProjCard = ({ proj, handleDelete, handleEdit }) => {
 						{proj.scoreDist}
 					</div>
 				</div>
+				<div className="flex flex-row">
+					<label>Jeannen: </label>
+					<div className="badge badge-secondary">
+						{proj.scoreJeannen}
+					</div>
+				</div>
 
 				<div className="card-actions justify-end">
 					<button className="btn btn-primary" onClick={handleEdit}>

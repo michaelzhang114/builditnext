@@ -66,6 +66,7 @@ const Feed = () => {
 			// setLoading(true);
 			const response = await fetch("/api/project");
 			const data = await response.json();
+			console.log(data);
 
 			// // if no sorting
 			if (!mySort) {
@@ -76,7 +77,8 @@ const Feed = () => {
 				mySort == "scorePV" ||
 				mySort == "scoreScale" ||
 				mySort == "scoreTech" ||
-				mySort == "scoreDist"
+				mySort == "scoreDist" ||
+				mySort == "scoreJeannen"
 			) {
 				console.log("sorting");
 				const sortedData = sortByKey(data, mySort);
@@ -121,6 +123,7 @@ const Feed = () => {
 				<Link href={"?sort=scoreScale"}>Sort by scale</Link>
 				<Link href={"?sort=scoreTech"}>Sort by tech</Link>
 				<Link href={"?sort=scoreDist"}>Sort by distribution</Link>
+				<Link href={"?sort=scoreJeannen"}>Sort by Jeannen</Link>
 			</div>
 
 			<ProjCardList
