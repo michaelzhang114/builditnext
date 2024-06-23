@@ -2,31 +2,45 @@ import Proj from "@models/proj";
 import { connectToDB } from "@utils/database";
 
 //GET
-// export const GET = async (request, { params }) => {
-// 	try {
-// 		await connectToDB();
-// 		const prompt = await Verse.findById(params.id).populate("creator");
-// 		if (!prompt) return new Response("Verse not found", { status: 404 });
-// 		return new Response(JSON.stringify(prompt), { status: 200 });
-// 	} catch (error) {
-// 		return new Response("Failed to fetch all verses", { status: 500 });
-// 	}
-// };
+export const GET = async (request, { params }) => {
+	try {
+		await connectToDB();
+		const proj = await Proj.findById(params.id).populate("creator");
+		if (!proj) return new Response("Proj not found", { status: 404 });
+		return new Response(JSON.stringify(proj), { status: 200 });
+	} catch (error) {
+		return new Response("Failed to fetch all projs", { status: 500 });
+	}
+};
 
 //PATCH
 export const PATCH = async (request, { params }) => {
-	// const { prompt, tag } = await request.json();
-	// try {
-	// 	await connectToDB();
-	// 	const existingPrompt = await Prompt.findById(params.id);
-	// 	if (!prompt) return new Response("Prompt not found", { status: 404 });
-	// 	existingPrompt.prompt = prompt;
-	// 	existingPrompt.tag = tag;
-	// 	await existingPrompt.save();
-	// 	return new Response(JSON.stringify(existingPrompt), { status: 200 });
-	// } catch (error) {
-	// 	return new Response("failed to update prompt", { status: 500 });
-	// }
+	const {
+		projectName,
+		description,
+		scorePV,
+		scoreScale,
+		scoreTech,
+		scoreDist,
+	} = await request.json();
+	try {
+		await connectToDB();
+		const existingProj = await Proj.findById(params.id);
+		if (!projectName)
+			return new Response("Project name not found", { status: 404 });
+
+		existingProj.projectName = projectName;
+		existingProj.description = description;
+		existingProj.scorePV = scorePV;
+		existingProj.scoreScale = scoreScale;
+		existingProj.scoreTech = scoreTech;
+		existingProj.scoreDist = scoreDist;
+
+		await existingProj.save();
+		return new Response(JSON.stringify(existingProj), { status: 200 });
+	} catch (error) {
+		return new Response("failed to update project", { status: 500 });
+	}
 };
 
 //DELETE

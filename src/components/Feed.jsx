@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 
-const ProjCardList = ({ data, handleDelete, loading }) => {
+const ProjCardList = ({ data, handleDelete, handleEdit, loading }) => {
 	return loading ? (
 		<span className="loading loading-ring loading-lg"></span>
 	) : data.length == 0 ? (
@@ -20,6 +20,9 @@ const ProjCardList = ({ data, handleDelete, loading }) => {
 					proj={proj}
 					handleDelete={() => {
 						handleDelete && handleDelete(proj);
+					}}
+					handleEdit={() => {
+						handleEdit && handleEdit(proj);
 					}}
 				/>
 			))}
@@ -55,6 +58,8 @@ const Feed = () => {
 	const searchParams = useSearchParams();
 	const mySort = searchParams.get("sort");
 	// console.log(mySort);
+
+	const router = useRouter();
 
 	useEffect(() => {
 		const fetchProjs = async () => {
@@ -104,6 +109,11 @@ const Feed = () => {
 		}
 	};
 
+	const handleEdit = (proj) => {
+		console.log(proj);
+		router.push(`/update-proj?id=${proj._id}`);
+	};
+
 	return (
 		<div>
 			<div className="flex flex-row gap-4">
@@ -115,6 +125,7 @@ const Feed = () => {
 
 			<ProjCardList
 				data={projs}
+				handleEdit={handleEdit}
 				handleDelete={handleDelete}
 				loading={loading}
 			/>

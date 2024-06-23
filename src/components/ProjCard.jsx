@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProjCard = ({ proj, handleDelete }) => {
+const ProjCard = ({ proj, handleDelete, handleEdit }) => {
 	return (
 		<div className="card bg-base-100 shadow-xl w-full">
 			<div className="card-body">
@@ -30,7 +30,9 @@ const ProjCard = ({ proj, handleDelete }) => {
 				</div>
 
 				<div className="card-actions justify-end">
-					<button className="btn btn-primary">Edit</button>
+					<button className="btn btn-primary" onClick={handleEdit}>
+						Edit
+					</button>
 					<button className="btn btn-primary" onClick={handleDelete}>
 						Delete
 					</button>

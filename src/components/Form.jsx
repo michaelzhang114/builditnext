@@ -2,47 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Slider from "./Slider";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 
-const Form = () => {
-	const router = useRouter();
-	const { data: session } = useSession();
-	// const [submitting, setSubmitting] = useState(false);
-
-	const [proj, setProj] = useState({
-		projectName: "",
-		description: "",
-		scorePV: "0",
-		scoreTech: "0",
-		scoreDist: "0",
-		scoreScale: "0",
-	});
-
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		// setSubmitting(true);
-
-		try {
-			const payload = JSON.stringify({
-				...proj,
-				userId: session?.user.id,
-			});
-			const response = await fetch("api/project/new", {
-				method: "POST",
-				body: payload,
-			});
-
-			if (response.ok) {
-				router.push("/");
-			}
-		} catch (error) {
-			console.log(error);
-		} finally {
-			// setSubmitting(false);
-		}
-	};
-
+const Form = ({ type, proj, setProj, handleSubmit, submitting }) => {
 	// useEffect(() => {
 	// 	console.log(proj);
 	// }, [proj]);
@@ -50,6 +11,7 @@ const Form = () => {
 	return (
 		<section>
 			<form onSubmit={handleSubmit}>
+				<span>{type} Form</span>
 				<label className="form-control w-full max-w-xs">
 					<div className="label">
 						<span className="label-text">Project Name</span>
@@ -126,7 +88,7 @@ const Form = () => {
 				</label>
 
 				<button className="btn btn-primary" type="submit">
-					Primary
+					Save
 				</button>
 			</form>
 		</section>

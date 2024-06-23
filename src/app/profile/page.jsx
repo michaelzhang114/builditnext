@@ -1,7 +1,7 @@
 import React from "react";
 import Feed from "@components/Feed";
 
-const page = ({ searchParams }) => {
+const Profile = ({ searchParams }) => {
 	// console.log(searchParams);
 	// const { sort, filter } = searchParams;
 	// console.log(`sort: ${sort}`);
@@ -13,4 +13,4 @@ const page = ({ searchParams }) => {
 	);
 };
 
-export default page;
+export default Profile;
