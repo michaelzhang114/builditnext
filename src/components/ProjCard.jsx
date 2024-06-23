@@ -2,7 +2,7 @@ import React from "react";
 
 const ProjCard = ({ proj, handleDelete }) => {
 	return (
-		<div className="card bg-base-100 shadow-xl">
+		<div className="card bg-base-100 shadow-xl w-full">
 			<div className="card-body">
 				<h2 className="card-title">{proj.projectName}</h2>
 				<p>{proj.description}</p>

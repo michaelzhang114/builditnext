@@ -24,7 +24,7 @@ export const GET = async (req, res) => {
 		const projsThisUser = await Proj.find({ creator: userId }).populate(
 			"creator"
 		);
-		console.log(projsThisUser);
+		// console.log(projsThisUser);
 		// const newVerse = new Verse({ creator: userId, title, contents });
 		// await newVerse.save();
 		return new Response(JSON.stringify(projsThisUser), { status: 200 });
