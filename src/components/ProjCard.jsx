@@ -31,7 +31,9 @@ const ProjCard = ({ proj, handleDelete }) => {
 
 				<div className="card-actions justify-end">
 					<button className="btn btn-primary">Edit</button>
-					<button className="btn btn-primary">Delete</button>
+					<button className="btn btn-primary" onClick={handleDelete}>
+						Delete
+					</button>
 				</div>
 			</div>
 		</div>

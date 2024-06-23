@@ -85,23 +85,23 @@ const Feed = () => {
 		fetchProjs();
 	}, [mySort]);
 
-	const handleDelete = async (verse) => {
+	const handleDelete = async (proj) => {
 		// console.log("deleting");
-		// const hasConfirmed = confirm("Are you sure you want to delete?");
-		// if (hasConfirmed) {
-		// 	try {
-		// 		await fetch(`/api/verse/${verse._id.toString()}`, {
-		// 			method: "DELETE",
-		// 		});
-		// 		// const filteredPosts = posts.filter((p) => p._id !== post._id);
-		// 		// setPosts(filteredPosts);
-		// 		setVerses((prevVerses) =>
-		// 			prevVerses.filter((v) => v._id !== verse._id)
-		// 		);
-		// 	} catch (error) {
-		// 		console.log(error);
-		// 	}
-		// }
+		const hasConfirmed = confirm("Are you sure you want to delete?");
+		if (hasConfirmed) {
+			try {
+				await fetch(`/api/project/${proj._id.toString()}`, {
+					method: "DELETE",
+				});
+				// const filteredPosts = posts.filter((p) => p._id !== post._id);
+				// setPosts(filteredPosts);
+				setProjs((prevProjs) =>
+					prevProjs.filter((p) => p._id !== proj._id)
+				);
+			} catch (error) {
+				console.log(error);
+			}
+		}
 	};
 
 	return (
