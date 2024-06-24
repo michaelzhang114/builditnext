@@ -13,7 +13,7 @@ const ProjCardList = ({ data, handleDelete, handleEdit, loading }) => {
 	) : data.length == 0 ? (
 		<p>You don&apos;t have any verses.</p>
 	) : (
-		<div className="flex flex-row flex-wrap mx-auto">
+		<div className="flex flex-col">
 			{data.map((proj) => (
 				<ProjCard
 					key={proj._id}
@@ -57,7 +57,7 @@ const Feed = () => {
 
 	const searchParams = useSearchParams();
 	const mySort = searchParams.get("sort");
-	// console.log(mySort);
+	console.log(mySort);
 
 	const router = useRouter();
 
@@ -117,13 +117,53 @@ const Feed = () => {
 	};
 
 	return (
-		<div>
-			<div className="flex flex-row gap-4">
-				<Link href={"?sort=scorePV"}>Sort by PV</Link>
-				<Link href={"?sort=scoreScale"}>Sort by scale</Link>
-				<Link href={"?sort=scoreTech"}>Sort by tech</Link>
-				<Link href={"?sort=scoreDist"}>Sort by distribution</Link>
-				<Link href={"?sort=scoreJeannen"}>Sort by Jeannen</Link>
+		<div className="max-w-sm mx-3">
+			<div className="flex flex-row flex-wrap gap-x-3 gap-y-1">
+				<span>Sort by:</span>
+
+				<Link href={"?sort=scoreJeannen"}>
+					{mySort == "scoreJeannen" ? (
+						<div className="badge badge-success">Overall</div>
+					) : (
+						<div className="badge badge-outline">Overall</div>
+					)}
+				</Link>
+				<Link href={"?sort=scorePV"}>
+					{mySort == "scorePV" ? (
+						<div className="badge badge-primary">
+							Perceived Value
+						</div>
+					) : (
+						<div className="badge badge-outline">
+							Perceived Value
+						</div>
+					)}{" "}
+				</Link>
+				<Link href={"?sort=scoreScale"}>
+					{mySort == "scoreScale" ? (
+						<div className="badge badge-secondary">Scale</div>
+					) : (
+						<div className="badge badge-outline">Scale</div>
+					)}{" "}
+				</Link>
+				<Link href={"?sort=scoreTech"}>
+					{mySort == "scoreTech" ? (
+						<div className="badge badge-accent">
+							Technical Skills
+						</div>
+					) : (
+						<div className="badge badge-outline">
+							Technical Skills
+						</div>
+					)}{" "}
+				</Link>
+				<Link href={"?sort=scoreDist"}>
+					{mySort == "scoreDist" ? (
+						<div className="badge badge-warning">Distribution</div>
+					) : (
+						<div className="badge badge-outline">Distribution</div>
+					)}{" "}
+				</Link>
 			</div>
 
 			<ProjCardList
