@@ -12,7 +12,7 @@ const Form = ({ type, proj, setProj, handleSubmit, submitting }) => {
 		<section>
 			<div className="">
 				<form onSubmit={handleSubmit}>
-					<span>{type} Form</span>
+					{/* <span>{type} Form</span> */}
 
 					<label className="form-control w-full max-w-sm mx-auto mb-4">
 						<div className="label">
@@ -24,6 +24,8 @@ const Form = ({ type, proj, setProj, handleSubmit, submitting }) => {
 							type="text"
 							placeholder="Type here"
 							className="input input-bordered w-full"
+							maxLength={"60"}
+							required
 							value={proj.projectName}
 							onChange={(e) => {
 								setProj({
@@ -45,6 +47,7 @@ const Form = ({ type, proj, setProj, handleSubmit, submitting }) => {
 							rows="5"
 							cols="50"
 							value={proj.description}
+							required
 							onChange={(e) => {
 								setProj({
 									...proj,

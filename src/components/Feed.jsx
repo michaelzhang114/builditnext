@@ -117,7 +117,7 @@ const Feed = () => {
 	};
 
 	return (
-		<div className="max-w-sm mx-3">
+		<div className="max-w-sm mx-auto md:max-w-xl lg:max-w-3xl mt-4">
 			<div className="flex flex-row flex-wrap gap-x-3 gap-y-1">
 				<span>Sort by:</span>
 
