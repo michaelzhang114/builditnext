@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import "@styles/globals.css";
 import { AOSInit } from "@components/aos";
 import Provider from "@components/Provider";
@@ -18,7 +18,7 @@ const RootLayout = ({ children }) => {
 				<Provider>
 					<main className="app">
 						<Nav></Nav>
-						{children}
+						<Suspense>{children}</Suspense>
 					</main>
 				</Provider>
 			</body>
