@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Feed from "@components/Feed";
 
 const Profile = ({ searchParams }) => {
@@ -8,7 +8,9 @@ const Profile = ({ searchParams }) => {
 
 	return (
 		<section>
-			<Feed />
+			<Suspense>
+				<Feed />
+			</Suspense>
 		</section>
 	);
 };

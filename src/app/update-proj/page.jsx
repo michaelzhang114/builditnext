@@ -74,13 +74,15 @@ const UpdateProj = () => {
 
 	return (
 		<section>
-			<Form
-				type={"Edit"}
-				proj={proj}
-				setProj={setProj}
-				handleSubmit={updateProj}
-				submitting={submitting}
-			/>
+			<Suspense>
+				<Form
+					type={"Edit"}
+					proj={proj}
+					setProj={setProj}
+					handleSubmit={updateProj}
+					submitting={submitting}
+				/>
+			</Suspense>
 		</section>
 	);
 };
