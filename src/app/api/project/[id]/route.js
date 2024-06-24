@@ -35,8 +35,12 @@ export const PATCH = async (request, { params }) => {
 		existingProj.scoreScale = scoreScale;
 		existingProj.scoreTech = scoreTech;
 		existingProj.scoreDist = scoreDist;
-
-		await existingProj.save();
+		(existingProj.scoreJeannen =
+			Number(scorePV) +
+			Number(scoreScale) +
+			Number(scoreTech) +
+			Number(scoreDist) * 3),
+			await existingProj.save();
 		return new Response(JSON.stringify(existingProj), { status: 200 });
 	} catch (error) {
 		return new Response("failed to update project", { status: 500 });
