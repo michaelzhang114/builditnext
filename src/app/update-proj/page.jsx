@@ -4,8 +4,7 @@ import Form from "@components/Form";
 import React from "react";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
-import { Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 
 const UpdateProj = () => {
 	const router = useRouter();
@@ -74,15 +73,17 @@ const UpdateProj = () => {
 	};
 
 	return (
-		<Suspense>
-			<Form
-				type={"Edit"}
-				proj={proj}
-				setProj={setProj}
-				handleSubmit={updateProj}
-				submitting={submitting}
-			/>
-		</Suspense>
+		<section>
+			<Suspense>
+				<Form
+					type={"Edit"}
+					proj={proj}
+					setProj={setProj}
+					handleSubmit={updateProj}
+					submitting={submitting}
+				/>
+			</Suspense>
+		</section>
 	);
 };
 
