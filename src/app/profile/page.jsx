@@ -1,6 +1,5 @@
 import React, { Suspense } from "react";
 import Feed from "@components/Feed";
-import { Suspense } from "react";
 
 const Profile = ({ searchParams }) => {
 	// console.log(searchParams);
