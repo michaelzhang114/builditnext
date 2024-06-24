@@ -5,6 +5,7 @@ import React from "react";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
+import { Suspense } from "react";
 
 const UpdateProj = () => {
 	const router = useRouter();
