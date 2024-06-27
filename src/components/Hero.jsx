@@ -11,7 +11,7 @@ const Hero = () => {
 					<div className="max-w-md" data-aos="zoom-y-out">
 						<h1 className="text-5xl font-bold">Hello there</h1>
 						<p className="py-6">
-							Providenat cupiditate voluptatem et in. Quaerat
+							Providenata cupiditate voluptatem et in. Quaerat
 							fugiat ut assumenda excepturi exercitationem quasi.
 							In deleniti eaque aut repudiandae et a id nisi.
 						</p>
